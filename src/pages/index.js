@@ -4,7 +4,8 @@ import axios from 'axios'
 
 export default function Home({data}) {
   const list = data.result.properties.elements
-  const id = data.result.properties.elements.id
+  const { id } = data.result.properties.elements
+  
   return (
     <div>
       <Head>
@@ -17,7 +18,7 @@ export default function Home({data}) {
         <List list={list} key={id}/>
       </main>
 
-      <footer></footer>
+      <footer>&copy; Maria Cotofana</footer>
     </div>
   );
 }
@@ -25,7 +26,7 @@ export default function Home({data}) {
 export const getServerSideProps = async (context) => {
   const baseUrl = process.env.NODE_ENV === 'production' ? 'https://properties-list-with-filter.vercel.app/' : 'http://localhost:3000/'
   const { data } = await axios.get(`${baseUrl}api/properties`)
-  console.log(data)
+
   if (!data) {
     return {
       error: 'error, not found',
