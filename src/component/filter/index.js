@@ -1,3 +1,3 @@
-import FilterBedrooms from './filter'
+import FilterBedrooms from './filter';
 
-export default FilterBedrooms
+export default FilterBedrooms;

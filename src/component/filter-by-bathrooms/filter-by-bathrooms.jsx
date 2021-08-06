@@ -1,22 +1,22 @@
+import { TextField } from '@material-ui/core';
 import React from 'react';
 
-const FilterBathrooms = ({ filterBathrooms, setFilterBathrooms }) => {
+const FilterBathrooms = ({ bathroom, setBathroom }) => {
   const handleChange = (event) => {
     const { value } = event.target;
-    setFilterBathrooms(value);
+    setBathroom(value);
   };
 
   return (
-    <div>
-      <input
-        size="3"
+      <TextField
+        min={0}
+        max={10}
+        id="number-bathrooms"
+        label="Number of bathrooms"
         type="number"
-        min="0"
-        max="10"
-        value={filterBathrooms}
+        value={bathroom}
         onChange={handleChange}
       />
-    </div>
   );
 };
 

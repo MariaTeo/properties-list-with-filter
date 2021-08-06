@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import SeeMore from '../see-more/see-more';
 import * as S from './card.style';
 
@@ -7,10 +7,7 @@ const Card = ({ data }) => {
     property_id,
     property_type,
     available_on,
-    branch_name,
-    agency_name,
     created_at,
-    short_description,
     contact_telephone,
     status,
     price,
@@ -30,8 +27,10 @@ const Card = ({ data }) => {
             <h4>Available from: {available_on}</h4>
           </S.Property>
         </S.MainTitle>
-        <h5>Branch: {agency.branch.branch_name}</h5>
-        <h5>Agency name: {agency.agency_name}</h5>
+        <S.Agency>
+          <h5>Branch: {agency.branch.branch_name}</h5>
+          <h5>Agency name: {agency.agency_name}</h5>
+        </S.Agency>
       </header>
       <S.ContentCard>
         <S.ContentTitle>Main info:</S.ContentTitle>
@@ -42,10 +41,12 @@ const Card = ({ data }) => {
       </S.ContentCard>
       <S.Description>
         <S.ContentTitle>See description:</S.ContentTitle>
-        <SeeMore data={data} show={show} />
+        <SeeMore data={data} />
       </S.Description>
       <footer>
-        <h4>Contact us: {contact_telephone}</h4>
+        <S.Contact>
+          <h4>Contact us: {contact_telephone}</h4>
+        </S.Contact>
         <S.Created>Add created on: {created_at}</S.Created>
       </footer>
     </S.Card>
