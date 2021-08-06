@@ -22,7 +22,7 @@ export default function Home({data}) {
 }
 
 export const getStaticProps = async (context) => {
-  const res = await fetch('http://localhost:3100/api/properties');
+  const res = await fetch('http://localhost:3000/api/properties');
 
   const data = await res.json();
 
