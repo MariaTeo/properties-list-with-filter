@@ -22,7 +22,7 @@ export default function Home({data}) {
   );
 }
 
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
   const baseUrl = process.env.NODE_ENV === 'production' ? 'https://properties-list-with-filter.vercel.app/' : 'http://localhost:3000/'
   const { data } = await axios.get(`${baseUrl}api/properties`)
   console.log(data)
