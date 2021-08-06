@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import List from '../component/list';
+import axios from 'axios'
 
 export default function Home({data}) {
   const list = data.result.properties.elements
@@ -22,9 +23,8 @@ export default function Home({data}) {
 }
 
 export const getStaticProps = async (context) => {
-  const res = await fetch('http://localhost:3000/api/properties');
-
-  const data = await res.json();
+  const baseUrl = process.env.NODE_ENV === 'production' ? 'https://properties-list-with-filter-259b9vu5a.vercel.app/' : 'http://localhost:3000/'
+  const { data } = await axios.get(`${baseUrl}api/properties`)
 
   if (!data) {
     return {
