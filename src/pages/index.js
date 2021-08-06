@@ -23,9 +23,9 @@ export default function Home({data}) {
 }
 
 export const getStaticProps = async (context) => {
-  const baseUrl = process.env.NODE_ENV === 'production' ? 'https://properties-list-with-filter-259b9vu5a.vercel.app/' : 'http://localhost:3000/'
+  const baseUrl = process.env.NODE_ENV === 'production' ? 'https://properties-list-with-filter.vercel.app/' : 'http://localhost:3000/'
   const { data } = await axios.get(`${baseUrl}api/properties`)
-
+  console.log(data)
   if (!data) {
     return {
       error: 'error, not found',
